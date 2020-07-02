@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+
+.detail-img{
+max-width: 400px;
+}
+.detail-info{
+margin-top: 20px;
+margin-left: 20px;
+margin-bottom: auto;
+font-size: 18px;
+line-height: 2;
+min-height: max-content;
+font-family: arial;
+letter-spacing: 0.01px;
+font-weight: 100;
+font-style: normal;
+}
+.cungloai-img{
+max-width: 100px;
+border-radius: 5px;
+margin: 3px;
+padding: 3px;
+box-shadow: 0px 2px 2px gray;
+}
+.cungloai-img:hover{
+box-shadow: 0px 2px 2px blue;
+	
+}	
+
