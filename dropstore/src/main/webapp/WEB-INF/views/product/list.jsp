@@ -6,7 +6,7 @@
 	<div class="col-sm-4">
 	<div class="thumbnail">
       <a href="/product/detail/${p.id}"> <%-- --%>
-        <img class="dropstore-prod" src="/static/anh/lights.jpg"/>
+        <img class="dropstore-prod" src="${p.image}"/>
       </a>
         <div class="caption">
           <p class="caption1">${p.name}</p>

@@ -3,7 +3,7 @@
 <%@	taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div class="row"> 
 	<div class="col-sm-5">
-<img class="detail-img" src="/static/anh/1.jpg" ></div>
+<img class="detail-img" src="${prod.image }" ></div>
 	
 	<div class="col-sm-7">
 	
@@ -30,7 +30,7 @@
 	</div>
 </div>
 
-<div class="text-justify">Description: ${prod.description}</div>
+<div class="text-justify" style="margin-top: 15px">Description: ${prod.description}</div>
 
 
 
@@ -45,21 +45,21 @@
   <div id="tab1" class="tab-pane fade in active">
    <div>
 			<c:forEach var="cungloai" items="${list}">
-				<a href="/product/detail/${cungloai.id}"><img class="cungloai-img" src="/static/anh/2.jpg"></a>
+				<a href="/product/detail/${cungloai.id}"><img class="cungloai-img" src="${cungloai.image}"></a>
 			</c:forEach>
 	</div>
  </div>
  <div id="tab2" class="tab-pane fade">
    <div>
     		<c:forEach var="yeuthich" items="${favo}" >
- 				<a href="/product/detail/${yeuthich.id}" ><img class="cungloai-img" src="/static/anh/2.jpg" ></a> 
+ 				<a href="/product/detail/${yeuthich.id}" ><img class="cungloai-img" src="${yeuthich.image}" ></a> 
 			</c:forEach>
    </div>
  </div>
  <div id="tab3" class="tab-pane fade">
    <div>
    			<c:forEach var="daxem" items="${viewed}" >
-  				<a href="/product/detail/${daxem.id}" ><img class="cungloai-img" src="/static/anh/2.jpg" ></a> 
+  				<a href="/product/detail/${daxem.id}" ><img class="cungloai-img" src="${daxem.image}" ></a> 
 </c:forEach>
       </div>
     

@@ -3,17 +3,13 @@ $(document).ready(function() {
 		var id=$(this).closest("div").attr("data-id");
 		
 		$.ajax({
-			url:"/cart/add/"+id,
+			url:"/product/add-to-favo/"+id,
 			success: function(response){
-				alert(response)
+				if(response) alert("Thêm thành công")
+				else alert("Đã có sẵn")
 			}
 		})
-	});
-	$("btn-cart").click(function(){
-		var id=id=$(this).closest("div").attr("data-id");
-	});
-	
-	
+	})	
 }
-		
+	
 );
