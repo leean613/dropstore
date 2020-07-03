@@ -51,7 +51,7 @@ ProductDAO pdao;
 		Collection<Product> ps=this.getItems();
 		double amount=0;
 		for(Product p:ps) {
-			amount+=(p.getUnitprice()*p.getQuantity())*(1-p.getDiscount());
+			amount+=(p.getUnitprice()*p.getQuantity())*(1-p.getDiscount()*0.01);
 		}
 		return amount;
 	}

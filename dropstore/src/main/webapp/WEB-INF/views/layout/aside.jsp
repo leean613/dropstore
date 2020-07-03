@@ -1,13 +1,13 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}"/>
 <div class="panel panel-default">
   	<div class="panel-heading">Shopping Cart </div>
   	<div class="panel-body">
   		<img src="/static/anh/index.png"  class="col-sm-5">
   		<ul>
-  			<li>10 mặt hàng</li>
-  			<li>100 nghìn đồng</li>
+  			<li><b id="cart-cnt">${cart.count}</b> mặt hàng</li><%--li> Price: <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12"></fmt:formatNumber>đ  </li>  --%>
+  			<li><b id="cart-amt">${cart.amount}</b> đ</li>
   			<li> 
   				<a href="">Xem giỏ hàng </a> 
   			</li>

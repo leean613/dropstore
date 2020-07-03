@@ -3,6 +3,7 @@
 
 .detail-img{
 max-width: 400px;
+
 }
 .detail-info{
 margin-top: 20px;
@@ -17,7 +18,7 @@ font-weight: 100;
 font-style: normal;
 }
 .cungloai-img{
-max-width: 100px;
+height: 100px;	
 border-radius: 5px;
 margin: 3px;
 padding: 3px;
@@ -27,4 +28,5 @@ box-shadow: 0px 2px 2px gray;
 box-shadow: 0px 2px 2px blue;
 	
 }	
+
 

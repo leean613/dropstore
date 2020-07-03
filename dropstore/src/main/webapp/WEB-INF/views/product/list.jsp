@@ -3,12 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <h2> </h2>
 <c:forEach var="p" items="${list}" >
-	<div class="col-sm-4">
-	<div class="thumbnail">
-      <a href="/product/detail/${p.id}"> <%-- --%>
-        <img class="dropstore-prod" src="${p.image}"/>
+	<div class="col-sm-4" style="height: 370.5px;">
+	<div class="thumbnail" style="height: 350.5px;" >
+      <a href="/product/detail/${p.id}">${p.image} <%-- --%>
+        <img class="dropstore-prod" style="height: 242.5px;" src="${p.image}"/> <%-- --%>
       </a>
-        <div class="caption">
+        <div class="caption" style="min-height: 68px">
           <p class="caption1">${p.name}</p>
            </div>
         <div class="pull-right" data-id="${p.id}">
