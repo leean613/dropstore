@@ -5,8 +5,8 @@
 <c:forEach var="p" items="${list}" >
 	<div class="col-sm-4" style="height: 370.5px;">
 	<div class="thumbnail" style="height: 350.5px;" >
-      <a href="/product/detail/${p.id}">${p.image} <%-- --%>
-        <img class="dropstore-prod" style="height: 242.5px;" src="${p.image}"/> <%-- --%>
+      <a href="/product/detail/${p.id}"> <%-- --%>
+        <img class="dropstore-prod" style="height: 242.5px;" src="${p.image}"/> <%--  --%>
       </a>
         <div class="caption" style="min-height: 68px">
           <p class="caption1">${p.name}</p>

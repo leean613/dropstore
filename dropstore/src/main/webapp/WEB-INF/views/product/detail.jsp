@@ -3,7 +3,7 @@
 <%@	taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div class="row"> 
 	<div class="col-sm-5">
-<img class="detail-img" src="${prod.image }" ></div>
+<img class="detail-img" src="${prod.image}" ></div> <%--viducapnhap } --%>
 	
 	<div class="col-sm-7">
 	
@@ -25,6 +25,8 @@
   <li> ViewCount: ${prod.viewCount}</li>
   
   <li> Special:${prod.special?'Yes':'No'}</li>
+  
+  
 </ul>
 	
 	</div>
