@@ -1,15 +1,16 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="cart" value="${sessionScope['scopedTarget.cartService']}"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:set var="cart" value="${sessionScope['scopedTarget.cartsService']}"/>
 <div class="panel panel-default">
   	<div class="panel-heading">Shopping Cart </div>
   	<div class="panel-body">
   		<img src="/static/anh/index.png"  class="col-sm-5">
   		<ul>
-  			<li><b id="cart-cnt">${cart.count}</b> mặt hàng</li><%--li> Price: <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12"></fmt:formatNumber>đ  </li>  --%>
-  			<li><b id="cart-amt">${cart.amount}</b> đ</li>
+  			<li><b id="cart-cnt" >${cart.count}</b> sản phẩm</li>
+  			<li><b id="cart-amt"><fmt:formatNumber value="${cart.amount}" type = "number" maxIntegerDigits = "12"></fmt:formatNumber></b> đ</li>
   			<li> 
-  				<a href="">Xem giỏ hàng </a> 
+  				<a href="/cart/view">Xem giỏ hàng </a> 
   			</li>
 				
   		</ul>

@@ -10,7 +10,7 @@
 <ul class="detail-info">
   <li> Name: ${prod.name}</li>
   
-  <li> Price: <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12"></fmt:formatNumber>đ  </li> <%-- <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12">đ</fmt:formatNumber> --%>
+  <li> Price: <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12" pattern="###,###,###"></fmt:formatNumber>đ  </li> <%-- <fmt:formatNumber value="${prod.unitprice}" type = "number" maxIntegerDigits = "12">đ</fmt:formatNumber> --%>
  
   <li> Available: ${prod.available?'Yes':'No'}</li>
   

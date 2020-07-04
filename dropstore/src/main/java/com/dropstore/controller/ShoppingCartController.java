@@ -16,6 +16,35 @@ public class ShoppingCartController {
 	@RequestMapping("/cart/add/{id}")
 	public Object add(@PathVariable("id") Integer id ) {
 		cart.add(id);
+	
+		Object[] info= {cart.getCount(),cart.getAmount()};
+		System.out.println("test chuoi "+info);
+		return info;
+	}
+	@RequestMapping("/cart/view")
+	public String view() {
+		return "cart/view";
+	}
+
+	@ResponseBody
+	@RequestMapping("/cart/clear")
+	public void clear() {
+		cart.clear();
+	}
+	@ResponseBody
+	@RequestMapping("/cart/remove/{id}")
+	public Object remove(@PathVariable("id") Integer id ) {
+		cart.remove(id);
+	
+		Object[] info= {cart.getCount(),cart.getAmount()};
+		System.out.println("test chuoi "+info);
+		return info;
+	}
+	@ResponseBody
+	@RequestMapping("/cart/update/{id}/{qty}")
+	public Object update(@PathVariable("id") Integer id, @PathVariable("qty") Integer qty) {
+		cart.update(id,qty);
+	
 		Object[] info= {cart.getCount(),cart.getAmount()};
 		System.out.println("test chuoi "+info);
 		return info;

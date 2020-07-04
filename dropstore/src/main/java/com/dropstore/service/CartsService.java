@@ -11,7 +11,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import com.dropstore.dao.ProductDAO;
 import com.dropstore.entity.Product;
 
-@SessionScope//Name: scopedTarget.cartService
+@SessionScope//Name: scopedTarget.cartsService
 @Service
 public class CartsService {
 @Autowired
@@ -53,7 +53,7 @@ ProductDAO pdao;
 		for(Product p:ps) {
 			amount+=(p.getUnitprice()*p.getQuantity())*(1-p.getDiscount()*0.01);
 		}
-		return amount;
+		return (int)amount;
 	}
 	public Collection<Product> getItems() {
 		return map.values();
