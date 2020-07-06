@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
+
 	@RequestMapping("/home/index")
 	public String index() {
 	    System.out.println("## chay index" );
