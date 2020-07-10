@@ -56,7 +56,9 @@ public class AccountController {
 		user.setAdmin(false);
 		cdao.create(user);
 		model.addAttribute("message","Register successfully!");
-		return "account/register";
+
+		if(model.getAttribute("message").equals("Register successfully!")) return "redirect:/account/login";
+		else return "account/register";
 	}
 	@GetMapping("/account/register")
 	public String register(Model model) {
@@ -64,6 +66,34 @@ public class AccountController {
 		model.addAttribute("form",user);
 		return "account/register";
 	}
+	@GetMapping("/account/edit")
+	public String edit(Model model) {
+		Customer  user=(Customer) session.getAttribute("user");
+		model.addAttribute("form",user);
+		
+		return "account/edit";
+	} 
+	@PostMapping("/account/edit")
+	public String edit(Model model,
+			@ModelAttribute("form") Customer user,
+			@RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException {
+		if(!file.isEmpty()) {
+			String dir=app.getRealPath("/static/images_customer");
+			File f= new File(dir, file.getOriginalFilename());
+			file.transferTo(f);
+			user.setPhoto(f.getName());
+			 
+		}
+		
+		
+		cdao.update(user);
+		session.setAttribute("user", user);
+		model.addAttribute("message","Updated successfully!");
+		return "account/edit";
+	}
+	
+	
+	
 	@GetMapping("/account/change")
 	public String change(Model model) {
 		Customer  user=new Customer();
@@ -107,7 +137,7 @@ public class AccountController {
 	
 	
 	@GetMapping("/account/login")
-	public String login(Model model) {
+	public String login(Model model ) {
 		Cookie ckid=cookie.read("userid");
 		Cookie ckpw=cookie.read("pass");
 		if(ckid!=null) {
@@ -118,6 +148,8 @@ public class AccountController {
 			model.addAttribute("pwd",pwd);
 		}
 		return "account/login";
+
+		 
 	}
 	@PostMapping("/account/login")
 	public String login(Model model,
@@ -140,11 +172,15 @@ public class AccountController {
 		else 
 		{
 			model.addAttribute("message","Login successfully!");
+			model.addAttribute("user", user.getId());
 			session.setAttribute("user", user);
+			
+//cokie			System.out.println("user= "+ cookie.read("userid").getValue() );
+			System.out.println(user.getId());
 			//ghi nho tai khoan bang cookie
 			if(rm==true) {
 				cookie.create("userid", user.getId(), 30);
-
+				System.out.println("user= "+ cookie.read("userid").getValue());
 				cookie.create("pass", user.getPassword(), 30);
 			}
 			else {
@@ -153,7 +189,11 @@ public class AccountController {
 				cookie.delete("pass");
 			}
 		}
-		return "account/login";
+		String backUrl=(String) session.getAttribute("back_url");
+		System.out.println("redirect:"+backUrl);
+		if (backUrl!=null) return "redirect:"+backUrl;
+//		if(model.getAttribute("message").equals("Login successfully!")) return "redirect:/home/index";
+		else return "account/login";
 		
 	 
 	}

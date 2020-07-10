@@ -1,5 +1,5 @@
 <%@page pageEncoding="utf-8"%>
-<h2>Đăng nhập</h2>
+<h2>Change password</h2>
 <h3>${message}</h3>
 <form action="/account/change" method="post">
 <div class="form-group" >

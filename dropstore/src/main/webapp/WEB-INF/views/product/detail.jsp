@@ -1,10 +1,23 @@
 <%@page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@	taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<div class="row"> 
+<div class="row">
 	<div class="col-sm-5">
-<img class="detail-img" src="${prod.image}" ></div> <%--viducapnhap } --%>
+		<img class="detail-img" src="${prod.image}">
+		<div class="pull-left" data-id="${prod.id}">
+			<button class="btn btn-dm btn-danger btn-cart">
+				<i class="glyphicon glyphicon-shopping-cart"></i>
+			</button>
+			<button class="btn btn-dm btn-success btn-star">
+				<i class="glyphicon glyphicon-star"></i>
+			</button>
+			<button class="btn btn-dm btn-warning">
+				<i class="glyphicon glyphicon-share"></i>
+			</button>
+		</div>
+	</div>
 	
+
 	<div class="col-sm-7">
 	
 <ul class="detail-info">

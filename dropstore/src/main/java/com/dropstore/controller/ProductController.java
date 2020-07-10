@@ -59,10 +59,9 @@ public class ProductController {
 	   Cookie favo=cookie.read("favo");
 	   if(favo!=null) {
 		   String ids =favo.getValue();
-		  
-		   
 		   List<Product> favo_list = pdao.findByIds(ids);
 		   model.addAttribute("favo", favo_list);
+		  
 		   
 	   					} 
 	   //set hàng đã xem
@@ -83,18 +82,29 @@ public class ProductController {
 	@RequestMapping("/product/add-to-favo/{id}")
 	public boolean addToIds(Model model,@PathVariable("id") Integer id ) {
 	    System.out.println("## add san pham vao fav ="+ id ); 
+
 	    Cookie favo= cookie.read("favo");
 	    String value =id.toString();
 	    if (favo!=null) {
 	    	 value= favo.getValue();
 	    	if(!value.contains(id.toString())) {
 	    		value +=","+id.toString();
-	    	}
-	    	else return false;
+//test
+	    		
+	  		
+	    		}
+		    									
+	    else return false;
 	    
 	    
 	}	cookie.create("favo", value, 30);
+		
+//code demo	
+		System.out.println("check tai value:"+value);
+		if(favo!=null) System.out.println("check tai product "+favo.getValue());
+		
 	    return true;
+//code demo1111
 }
 	@RequestMapping("/product/list-by-special/{id}")
 	public String listBySpecial(Model model,@PathVariable("id") Integer id ) {

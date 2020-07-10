@@ -1,6 +1,8 @@
 <%@page pageEncoding="utf-8"%>
 <h2>Đăng nhập</h2>
 <h3>${message}</h3>
+
+
 <form action="/account/login" method="post">
 <div class="form-group" >
 	<label>Username</label>

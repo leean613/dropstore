@@ -1,4 +1,5 @@
 <%@page pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -10,17 +11,30 @@
       <li><a href="/home/feedback">Feedback</a></li>
    	  <li><a href="/home/faqs">FAQs</a></li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tài khoản<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/account/login">Đăng nhập</a></li>
-          <li><a href="#">Đăng kí</a></li>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tài khoản: ${sessionScope.user.getId()}<span class="caret"></span></a>
+        <c:choose>
+        <c:when test="${empty sessionScope.user}">
+        	<ul class="dropdown-menu">
+          <li><a href="/account/login" class="signin">Đăng nhập</a></li>
+          <li><a href="/account/register">Đăng kí</a></li>
           <li><a href="#">Quên mật khẩu</a></li>
+         
+        	</ul>
+        </c:when>
+        <c:otherwise> 
+         <ul class="dropdown-menu">
+          
           <li><a href="/account/logoff">Đăng xuất</a></li>
           <li><a href="/account/change">Đổi mật khẩu</a></li>
-          <li><a href="#">Cập nhập tài khoản</a></li>
-          <li><a href="#">Đơn hàng</a></li>
+          <li><a href="/account/edit">Cập nhập tài khoản</a></li>
+          <li><a href="/cart/view">Đơn hàng</a></li>
           
         </ul>
+        
+        </c:otherwise>
+        </c:choose>
+        
+         
       </li>
     	
     </ul>

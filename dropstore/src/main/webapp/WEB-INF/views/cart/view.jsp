@@ -42,6 +42,6 @@
 <button class="btn btn-sm btn-info  pull-left" >Continue
 			
 </button>
-<button class="btn btn-sm btn-success pull-left" >Checkout
+<a href="/order/checkout" class="btn btn-sm btn-success pull-left" >Checkout
 			 
-</button>
+</a>
