@@ -140,7 +140,7 @@ public class AccountController {
 	public String login(Model model ) {
 		Cookie ckid=cookie.read("userid");
 		Cookie ckpw=cookie.read("pass");
-		if(ckid!=null) {
+		if(ckid!=null&& ckpw!=null) {
 			String uid=ckid.getValue();
 
 			String pwd=ckpw.getValue();
@@ -180,7 +180,7 @@ public class AccountController {
 			//ghi nho tai khoan bang cookie
 			if(rm==true) {
 				cookie.create("userid", user.getId(), 30);
-				System.out.println("user= "+ cookie.read("userid").getValue());
+//				System.out.println("user= "+ cookie.read("userid").getValue());
 				cookie.create("pass", user.getPassword(), 30);
 			}
 			else {
@@ -192,7 +192,7 @@ public class AccountController {
 		String backUrl=(String) session.getAttribute("back_url");
 		System.out.println("redirect:"+backUrl);
 		if (backUrl!=null) return "redirect:"+backUrl;
-//		if(model.getAttribute("message").equals("Login successfully!")) return "redirect:/home/index";
+		else if(model.getAttribute("message").equals("Login successfully!")) return "redirect:/home/index";
 		else return "account/login";
 		
 	 

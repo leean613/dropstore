@@ -28,12 +28,12 @@ public class Product {
 	Double unitprice;
 	String image;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/mm/yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	Date productDate;
 	Boolean available;
 	//Integer categoryId;
 	Integer quantity;
-	String Description;
+	String description;
 	Double discount;
 	Integer viewCount;
 	Boolean special;
@@ -60,11 +60,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getUnitprice() {
+	public Double getUnitprice() {
 		return unitprice;
 	}
 
-	public void setUnitprice(double unitprice) {
+	public void setUnitprice(Double unitprice) {
 		this.unitprice = unitprice;
 	}
 
@@ -101,11 +101,11 @@ public class Product {
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 	public Double getDiscount() {

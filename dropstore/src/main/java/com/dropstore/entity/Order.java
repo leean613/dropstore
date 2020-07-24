@@ -22,8 +22,8 @@ public class Order {
 	@Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	//String customerld;
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "mm/dd/yyyy")
+	@Temporal(TemporalType.TIMESTAMP )
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	Date orderDate;
 	String address;
 	Double amount;
@@ -76,5 +76,6 @@ public class Order {
 	public void setOrderdetails(List<Orderdetail> orderdetails) {
 		this.orderdetails = orderdetails;
 	}
-
+	
+	
 }

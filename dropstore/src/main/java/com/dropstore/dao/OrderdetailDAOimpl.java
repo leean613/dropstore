@@ -1,4 +1,4 @@
-package com.dropstore.dao;
+ package com.dropstore.dao;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dropstore.entity.Order;
 import com.dropstore.entity.Orderdetail;
 @Transactional
 @Repository
@@ -60,6 +61,17 @@ public class OrderdetailDAOimpl implements OrderdetailDAO {
 		
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Orderdetail> findByOrder(Order order) {
+		String hql="FROM Orderdetail d WHERE d.order.id=:oid ";
+		Session session=factory.getCurrentSession();
+		// TODO Auto-generated method stub
+		TypedQuery<Orderdetail> query= session.createQuery(hql,Orderdetail.class);
+		query.setParameter("oid",order.getId());
+		List<Orderdetail> list=query.getResultList();
+		return list;
 	}
 	
 
