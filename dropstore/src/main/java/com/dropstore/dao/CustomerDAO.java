@@ -9,5 +9,6 @@ public interface CustomerDAO {
  List<Customer> findAll();
  Customer create(Customer entity);
  void update(Customer entity);
- Customer delete(Integer id);
+ Customer delete(String id);
+List<Customer> findByKeywords(String keywords);
 }

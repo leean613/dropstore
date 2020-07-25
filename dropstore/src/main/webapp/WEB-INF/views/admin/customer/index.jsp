@@ -1,7 +1,7 @@
 <%@page pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h2>Category Manager </h2>
-<c:set var="base" value="/admin/product" scope="request"></c:set>
+<c:set var="base" value="/admin/customer" scope="request"></c:set>
 <h4 class="label label-success">${message}${param.message}</h4>
 
 

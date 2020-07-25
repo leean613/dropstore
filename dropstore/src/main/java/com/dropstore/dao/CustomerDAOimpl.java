@@ -52,13 +52,28 @@ public class CustomerDAOimpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer delete(Integer id) {
+	public Customer delete(String id) {
 		Session session=factory.getCurrentSession();
 		Customer entity = session.find(Customer.class, id);
 		session.delete(entity);
 		return entity;
 		
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Customer> findByKeywords(String keywords) {
+		String hql="FROM Customer c WHERE c.id LIKE:kw OR c.fullname LIKE:kw OR c.email LIKE:kw" ;//ORDER BY p.unitprice DESC để xắp sếp tăng giảm
+		System.out.println(hql);
+		Session session=factory.getCurrentSession();
+		// TODO Auto-generated method stub
+		TypedQuery<Customer> query= session.createQuery(hql,Customer.class);
+		query.setParameter("kw", "%"+keywords+"%");
+		List<Customer> list=query.getResultList();
+	
+		return list;
+		
 		
 	}
 	

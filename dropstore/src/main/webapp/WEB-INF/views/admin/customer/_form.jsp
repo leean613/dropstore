@@ -13,85 +13,64 @@
   	<div class="row">
   	<div class="form-group col-sm-6" >
 	<label>Id</label>
-	<form:input path="id" class="form-control" readonly="true"/> <%--  --%>
+	<form:input path="id" class="form-control" /> <%--  --%>
 	</div>
 	
 	<div class="form-group col-sm-6" >
-	<label>Name</label>
-	<form:input path="name" class="form-control"/>
+	<label>Full name</label>
+	<form:input path="fullname" class="form-control"/>
 	</div>
-	</div>
-	<div class="row">
-	<div class="form-group col-sm-6" >
-	<label>Loại</label>
-	<form:select path="category.id" class="form-control">
-	<form:options items="${cates}" itemLabel="NameVN" itemValue="id" />
-	</form:select>
 	</div>
 	
-
- 	<div class="form-group col-sm-6" >
-	<label>Giá</label>
-	<form:input path="unitprice" class="form-control"/>
-	</div>
-	</div>
 	<div class="row">
 	<div class="form-group col-sm-6" >
-	<label>Ngày nhập </label>
-	<form:input path="productDate" class="form-control"/>
+	<label>Email </label>
+	<form:input path="email" class="form-control"/>
 	</div>
 	<div class="form-group col-sm-6" >
-	<label>Available</label>
+	<label>Admin</label>
 	<div class="form-control">
-	<form:radiobutton path="available" value="true" label="Yes"/>
+	<form:radiobutton path="admin" value="true" label="Admin"/>
 	
-	<form:radiobutton path="available" value="false" label="No"/>
+	<form:radiobutton path="admin" value="false" label="User"/>
 	</div> 
 	</div>
-	</div>
-	<div class="row">
-	<div class="form-group col-sm-6" >
-	<label>Quantity</label>
-	<form:input path="quantity" class="form-control"/>
-	</div>
-	<div class="form-group col-sm-6" >
-	<label>Special</label>
-	<div class="form-control">
-	<form:radiobutton path="special" value="true" label="Yes"/>
 	
-	<form:radiobutton path="special" value="false" label="No"/>
+	</div>
+	
+	
+	<div class="row">
+	
+	<div class="form-group col-sm-6" >
+	<label>Activated</label>
+	<div class="form-control">
+	<form:radiobutton path="activated" value="true" label="Yes"/>
+	
+	<form:radiobutton path="activated" value="false" label="No"/>
 	<%-- <form:input path="special" class="form-control"/>--%>
 	</div>
 	</div>
-
-	</div>
-	<div class="row">
 	<div class="form-group col-sm-6" >
-	<label>Discount</label>
-	<form:input path="discount" class="form-control"/>
+	<label>Password</label>
+	<form:input path="password" class="form-control"/>
+	
 	</div>
 	
-	<div class="form-group col-sm-6" >
-	<label>View Count</label>
-	<form:input path="viewCount" class="form-control"/>
+
 	</div>
-	</div>
+	
 	
 	<div class="row">
 	<div class="form-group col-sm-12" >
 	<label>Photo</label>
 	<input type="file" name="photo_file" class="form-control">
-	<form:hidden path="image"/>
+	<form:hidden path="photo"/>
+	<a href="#"> <%-- --%>
+        <img  style="height: 242.5px;" src="${entity.photo}"/> <%--  --%>
+      </a>
+	</div>
+	</div>
 	
-	</div>
-	</div>
-	<div class="row">
-	
-	<div class="form-group col-sm-12" >
-	<label>Description</label>
-	<form:textarea path="description" rows="4" class="form-control"/>
-	</div>
-	</div>
 	<div class="row">
   	<div class="form-group col-sm-6" >
 	<button class="btn btn-primary" style="display:${empty entity.id?'inline':'none'};"  formaction="${base}/create" >Create</button>	<%--style="display:${empty entity.id?:'none':'inline'"} --%>
@@ -105,8 +84,3 @@
   </div>	
 
 </form:form>
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-  //]]>
-  </script>

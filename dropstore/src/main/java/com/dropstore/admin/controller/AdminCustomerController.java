@@ -17,100 +17,98 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.dropstore.dao.ProductDAO;
-import com.dropstore.entity.Product;
+import com.dropstore.dao.CustomerDAO;
+import com.dropstore.entity.Customer;
 
 @Controller
-public class adminProductController {
+public class AdminCustomerController {
 	@Autowired	
-	ProductDAO pdao;
+	CustomerDAO cdao;
 	@Autowired
 	ServletContext app;
-	@RequestMapping("admin/product/index")
+	@RequestMapping("admin/customer/index")
 	public String index(Model model) {
-		Product entity = new Product();
+		Customer entity = new Customer();
 		model.addAttribute("entity",entity);
-		model.addAttribute("list",pdao.findAll());
+		model.addAttribute("list",cdao.findAll());
 	    System.out.println("## chay index admin" );
 	    
 		//model.addAttribute("message1","true");
-		return "admin/product/index";
+		return "admin/customer/index";
 	}
-	@RequestMapping("admin/product/edit/{id}")
-	public String edit(Model model,@PathVariable("id") Integer id) {
+	@RequestMapping("admin/customer/edit/{id}")
+	public String edit(Model model,@PathVariable("id") String id) {
 		
-		Product entity=pdao.findByID(id);
-		model.addAttribute("list",pdao.findAll()); 
+		Customer entity=cdao.findByID(id);
+		model.addAttribute("list",cdao.findAll()); 
 		model.addAttribute("entity",entity);
 		//model.addAttribute("message1","true");
 		
 	    System.out.println("## chay edit admin" );
-	    if (entity.getId()!=null)  System.out.println("entity edit: "+entity.getId());
-		return "admin/product/index";
+		return "admin/customer/index";
 	}
-	@RequestMapping("admin/product/create")
+	@RequestMapping("admin/customer/create")
 	public String create(RedirectAttributes model,
-						@ModelAttribute("entity") Product entity,
+						@ModelAttribute("entity") Customer entity,
 						@RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException {
 		if(file.isEmpty()) {
-			entity.setImage("/static/anh/lights.jpg");
+			entity.setPhoto("/static/customeravatar/yellow.jpg");
 							}
 		else {
 			
 			//entity.setImage(file.getOriginalFilename());
-			String path =app.getRealPath("/static/anh/"+file.getOriginalFilename());
+			String path =app.getRealPath("/static/customer_avatar/"+file.getOriginalFilename());
 		
 			System.out.println("duong dan moi: "+path);
 			file.transferTo(new File(path));
-			entity.setImage("/static/anh/"+file.getOriginalFilename());
+			entity.setPhoto("/static/customeravatar/"+file.getOriginalFilename());
 			
 			}
-	    pdao.create(entity);
+	    cdao.create(entity);
 		
 		//model.addAttribute("message1","false");
 	    model.addAttribute("message","Thêm mới thành công");
 	    
-		return "redirect:/admin/product/index";
+		return "redirect:/admin/customer/index";
 	}
-	@RequestMapping("admin/product/update")
-	public String update(RedirectAttributes model,@ModelAttribute("entity") Product entity,
+	@RequestMapping("admin/customer/update")
+	public String update(RedirectAttributes model,@ModelAttribute("entity") Customer entity,
 			@RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException {
 		
 		if(!file.isEmpty()) {
 			//String path =app.getRealPath("/static/anh/"+file.getOriginalFilename());
-			String path =app.getRealPath("/static/anh/"+entity.getId()+".jpg");
+			String path =app.getRealPath("/static/customeravatar/"+entity.getId()+".jpg");
 			System.out.println("duong dan moi: "+path);
 			file.transferTo(new File(path));
-			entity.setImage("/static/anh/"+entity.getId()+".jpg");
+			entity.setPhoto("/static/customeravatar/"+entity.getId()+".jpg");
 			//entity.setImage("/static/anh/"+file.getOriginalFilename());
 							}
 		
 		
-	    pdao.update(entity);
+	    cdao.update(entity);
 	    model.addAttribute("message","Cập nhập thành công");
-	  	return "redirect:/admin/product/edit/"+entity.getId();
+	  	return "redirect:/admin/customer/edit/"+entity.getId();
 	}
-	@RequestMapping(value ={"/admin/product/delete","/admin/product/delete/{id2}"})//,RedirectAttributes model,
+	@RequestMapping(value ={"/admin/customer/delete","/admin/customer/delete/{id2}"})//,RedirectAttributes model,
 	//public String delete(@RequestParam(value ="id" ,required = false) Integer id1,
 	//					 @PathVariable(value ="id2",required = false) Integer id2) {
 		
-	public String delete(@ModelAttribute(value ="entity") Product entity,
-				 @PathVariable(value ="id2",required = false) Integer id2,
+	public String delete(@ModelAttribute(value ="entity") Customer entity,
+				 @PathVariable(value ="id2",required = false) String id2,
 				 RedirectAttributes model) {	
-		Integer id=(entity.getId()!=null)?entity.getId():id2;
-		pdao.delete(id);
+		String id=(entity.getId()!=null)?entity.getId():id2;
+		cdao.delete(id);
 	    model.addAttribute("message","Xoá thành công");
-		return "redirect:/admin/product/index";
+		return "redirect:/admin/customer/index";
 	}
-	@RequestMapping("admin/product/list-by-keywords")
+	@RequestMapping("admin/customer/list-by-keywords")
 	public String listBykeywords(Model model,@RequestParam("keywords") String keywords ) {
-	    System.out.println("## chay list san pham="+ keywords ); 
-	    List<Product> list = pdao.findByKeywords(keywords);
-	   // model.addAllAttribute ("list",list);
+	   
+		List<Customer> list = cdao.findByKeywords(keywords);
+	
 	   model.addAttribute("list", list);
-	   System.out.println("check list rong="+list.isEmpty());
-	    //return "admin/product/index#menu2";
-	   return "admin/product/_table2";
+	  
+	   return "admin/customer/_table2";
 	}
 	
 	

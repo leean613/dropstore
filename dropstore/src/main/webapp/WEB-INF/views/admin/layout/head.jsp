@@ -9,3 +9,4 @@
 
 <link href="../../../static/css/style.admin.css" rel="stylesheet"/>
 <script src="../../../static/js/drop.admin.js"> </script>
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
